@@ -1,5 +1,4 @@
 pipeline {
-
     agent any
 
     stages {
@@ -12,26 +11,26 @@ pipeline {
 
         stage('Build') {
             steps {
-                bat 'gradlew.bat clean build'
+                sh './gradlew clean build'
             }
         }
 
-        stage('Test') {
+        stage('Verify JAR') {
             steps {
-                bat 'gradlew.bat test'
+                sh 'ls build/libs'
             }
         }
 
         stage('Docker Build') {
             steps {
-                bat 'docker build -t cicd-app .'
+                sh 'docker build -t cicd-app .'
             }
         }
 
         stage('Run') {
             steps {
-                bat 'docker rm -f cicd-app || exit 0'
-                bat 'docker run -d --name cicd-app cicd-app'
+                sh 'docker rm -f cicd-app || true'
+                sh 'docker run -d --name cicd-app cicd-app'
             }
         }
     }
