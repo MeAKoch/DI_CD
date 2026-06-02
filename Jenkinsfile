@@ -24,7 +24,7 @@ pipeline {
 
         stage('Verify Build Output') {
             steps {
-                sh 'ls build/libs'
+                sh 'ls app/build/libs'
             }
         }
 
