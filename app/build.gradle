@@ -19,8 +19,15 @@ application {
     mainClass = 'com.example.App'
 }
 
+
 jar {
     manifest {
-        attributes 'Main-Class': 'cicd.App'
+        attributes 'Main-Class': 'com.example.App'
+    }
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
     }
 }
