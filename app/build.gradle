@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.13.2'
+}
+
+test {
+    useJUnit()
+}
+
+application {
+    mainClass = 'com.example.App'
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'cicd.App'
+    }
+}
