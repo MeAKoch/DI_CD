@@ -15,7 +15,13 @@ pipeline {
             }
         }
 
-        stage('Verify JAR') {
+        stage('Test') {
+            steps {
+                sh './gradlew test'
+            }
+        }
+
+        stage('Verify Build Output') {
             steps {
                 sh 'ls build/libs'
             }
